@@ -1,0 +1,319 @@
+
+/* ================================
+   CONFIGURAÇÕES GERAIS
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #d2c4b5;
+    background-image:
+        radial-gradient(circle at 15% 20%, #e6ddd2 0%, transparent 35%),
+        radial-gradient(circle at 85% 80%, #b69b80 0%, transparent 35%);
+
+    font-family: 'Poppins', sans-serif;
+    color: #29231f;
+    padding: 25px;
+}
+
+/* ================================
+   CONTAINER PRINCIPAL
+================================ */
+.vintage-container {
+    width: 100%;
+    max-width: 430px;
+
+    background-color: #f3eee7;
+    padding: 45px 40px;
+
+    border: 1px solid #c9b8a5;
+    box-shadow: 12px 15px 35px rgba(55, 39, 27, 0.20);
+
+    position: relative;
+}
+
+/* Detalhe decorativo superior */
+.vintage-container::before {
+    content: "";
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+
+    border: 1px solid #d8c9b9;
+    pointer-events: none;
+}
+
+/* ================================
+   CABEÇALHO
+================================ */
+.header-vintage {
+    text-align: center;
+    margin-bottom: 35px;
+    position: relative;
+    z-index: 1;
+}
+
+.icon-coffee {
+    display: block;
+    font-size: 35px;
+    margin-bottom: 12px;
+    filter: grayscale(1);
+}
+
+.header-vintage h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #29231f;
+}
+
+.subtitle {
+    margin-top: 10px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8b715a;
+}
+
+/* ================================
+   FORMULÁRIO
+================================ */
+.form-vintage {
+    position: relative;
+    z-index: 1;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 23px;
+}
+
+.grupo-input label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+    color: #594434;
+}
+
+.grupo-input input {
+    width: 100%;
+    padding: 14px 15px;
+
+    border: 1px solid #c7b39e;
+    background-color: #ebe3d9;
+
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #35271e;
+
+    transition: all 0.3s ease;
+}
+
+.grupo-input input::placeholder {
+    color: #a89887;
+    font-size: 12px;
+}
+
+.grupo-input input:focus {
+    border-color: #966747;
+    background-color: #fffaf4;
+    box-shadow: 0 0 0 2px rgba(150, 103, 71, 0.12);
+}
+
+/* ================================
+   BOTÃO ENTRAR
+================================ */
+.btn-vintage {
+    width: 100%;
+    padding: 15px;
+
+    margin-top: 8px;
+
+    background-color: #936342;
+    border: 1px solid #936342;
+
+    color: #f8f2eb;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-vintage:hover {
+    background-color: #30251e;
+    border-color: #30251e;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(48, 37, 30, 0.2);
+}
+
+/* ================================
+   LINK DE CADASTRO
+================================ */
+.footer-link {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.footer-link p {
+    font-size: 11px;
+    color: #796858;
+}
+
+.footer-link a {
+    color: #956745;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid #956745;
+    transition: all 0.3s ease;
+}
+
+.footer-link a:hover {
+    color: #30251e;
+    border-color: #30251e;
+}
+
+/* ================================
+   MENSAGEM DE STATUS
+================================ */
+.mensagem-status {
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #936342;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+
+    .vintage-container {
+        padding: 40px 25px;
+    }
+
+    .header-vintage h1 {
+        font-size: 29px;
+    }
+
+    .subtitle {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+}
+
+/* MODAIS DE RECUPERAÇÃO DE SENHA */
+.modal-recuperacao {
+    position: fixed;
+    inset: 0;
+    background: rgba(35, 26, 20, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-conteudo {
+    background: #f8f3ed;
+    border: 1px solid #e5d8ca;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.modal-conteudo h3 {
+    font-family: 'Playfair Display', serif;
+    color: #493629;
+    margin-bottom: 10px;
+}
+
+.modal-conteudo p {
+    font-size: 12px;
+    color: #786b5f;
+    margin-bottom: 15px;
+}
+
+.input-modal {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #b99a7e;
+    border-radius: 8px;
+    background: #fffaf4;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.modal-acoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-cancelar {
+    background: transparent;
+    border: 1px solid #b99a7e;
+    color: #79563e;
+    padding: 12px;
+    border-radius: 50px;
+    flex: 1;
+    cursor: pointer;
+}
+
+/* BOTÃO FLUTUANTE DE VOLTAR (Canto Superior Esquerdo - Modelo Circular) */
+.btn-voltar-loja {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    width: 44px;
+    height: 44px;
+    background-color: #ffffff;
+    border: 1px solid #e5dace;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #493629;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.25s ease-in-out;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.btn-voltar-loja:hover {
+    background-color: #493629;
+    color: #ffffff;
+    border-color: #493629;
+    transform: translateX(-3px);
+}

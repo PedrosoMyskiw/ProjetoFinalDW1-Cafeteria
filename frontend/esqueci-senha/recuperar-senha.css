@@ -1,0 +1,231 @@
+:root {
+    --cream: #f8f4ed;
+    --beige: #eee5d8;
+    --brown: #5b3928;
+    --dark-brown: #38251c;
+    --caramel: #a87950;
+    --text: #4a382d;
+    --muted: #998779;
+    --white: #fffdfa;
+    --border: #e5d8ca;
+    --green: #56744c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cream);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.auth-wrapper {
+    width: 100%;
+    max-width: 460px;
+}
+
+.auth-card {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 34px 32px;
+    box-shadow: 0 10px 30px rgba(56, 37, 28, 0.06);
+}
+
+.back-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 18px;
+    transition: 0.2s;
+}
+
+.back-link:hover {
+    color: var(--brown);
+}
+
+.small-label {
+    color: var(--caramel);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.brand-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--dark-brown);
+    margin-top: 4px;
+}
+
+.brand-header p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.5;
+}
+
+.feedback-box {
+    margin-top: 18px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.feedback-box.sucesso {
+    background-color: #edf7f0;
+    color: #225c37;
+    border: 1px solid #a8d1b5;
+}
+
+.feedback-box.erro {
+    background-color: #fdf0f0;
+    color: #8c2626;
+    border: 1px solid #e5b3b3;
+}
+
+.auth-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--brown);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: #ffffff;
+    font: inherit;
+    font-size: 14px;
+    color: var(--dark-brown);
+    outline: none;
+    transition: 0.2s;
+}
+
+.form-group input:focus {
+    border-color: var(--caramel);
+    box-shadow: 0 0 0 3px rgba(168, 121, 80, 0.14);
+}
+
+#codigoVerificacao {
+    letter-spacing: 6px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 18px;
+}
+
+.email-action-row {
+    display: flex;
+    gap: 8px;
+}
+
+.email-action-row input {
+    flex: 1;
+}
+
+.btn-secondary {
+    padding: 0 16px;
+    background-color: var(--beige);
+    color: var(--dark-brown);
+    border: 1px solid var(--caramel);
+    border-radius: 10px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: var(--caramel);
+    color: #ffffff;
+}
+
+.btn-secondary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.divider {
+    border-top: 1.5px dashed var(--border);
+    margin: 22px 0 4px;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    padding-right: 42px;
+}
+
+.toggle-pass {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.toggle-pass:hover {
+    color: var(--dark-brown);
+}
+
+.btn-primary {
+    margin-top: 6px;
+    width: 100%;
+    padding: 14px;
+    background-color: var(--dark-brown);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--brown);
+}
+
+.btn-primary:disabled {
+    background-color: #b7b1a9;
+    cursor: not-allowed;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Gerente | Caffè D'Autore</title>
+
+    <link rel="stylesheet" href="gerente.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="gerente.js" defer></script>
+</head>
+<body>
+
+<div class="admin-container">
+
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-icon"></span>
+            <h2>Caffè D'Autore</h2>
+            <p>PAINEL ADMINISTRATIVO</p>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="gerente.html" class="menu-item active"><span></span> Visão geral</a>
+            <a href="gerente-produtos/gerente-produtos.html" class="menu-item"><span></span> Produtos</a>
+            <a href="gerente-categorias/gerente-categorias.html" class="menu-item"><span></span> Categorias</a>
+            <a href="gerente-pedidos/gerente-pedidos.html" class="menu-item"><span></span> Pedidos</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="manager-info">
+                <div class="manager-avatar" id="sidebar-avatar">G</div>
+                <div>
+                    <strong id="sidebar-nome-usuario">Gerente</strong>
+                    <small id="sidebar-cargo-usuario">Administrador</small>
+                </div>
+            </div>
+
+            <button type="button" class="btn-sair" onclick="fazerLogout()">Sair da conta</button>
+        </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+
+        <header class="admin-header">
+            <div class="header-actions">
+                <a href="../loja/loja.html" class="btn-voltar-loja">Voltar para a Loja</a>
+            </div>
+        </header>
+
+        <header class="topbar">
+            <div>
+                <span class="small-label">ÁREA ADMINISTRATIVA</span>
+                <h1>Bem-vindo ao painel!</h1>
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="admin-section">
+            <div class="section-heading">
+                <div>
+                    <span class="small-label">RESUMO DA LOJA</span>
+                    <h2>Visão geral</h2>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">▣</span>
+                    <p>Produtos cadastrados</p>
+                    <h3 id="statTotalProdutos">0</h3>
+                    <small>Itens na loja</small>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">▤</span>
+                    <p>Categorias</p>
+                    <h3 id="statTotalCategorias">0</h3>
+                    <small>Grupos de produtos</small>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">♧</span>
+                    <p>Pedidos recebidos</p>
+                    <h3 id="statTotalPedidos">0</h3>
+                    <small>Pedidos cadastrados</small>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">R$</span>
+                    <p>Vendas totais</p>
+                    <h3 id="statVendasTotais">R$ 0,00</h3>
+                    <small>Valor em vendas</small>
+                </div>
+            </div>
+
+            <div class="welcome-card">
+                <div>
+                    <span class="small-label">CAFFÈ D'AUTORE</span>
+                    <h2>Um bom café começa com uma boa gestão.</h2>
+                    <p>Gerencie seus produtos, organize suas categorias e acompanhe os pedidos da sua loja.</p>
+                </div>
+                <span class="welcome-coffee">☕</span>
+            </div>
+        </section>
+
+        <footer class="admin-footer">
+            <p>© 2026 Caffè D'Autore · Painel administrativo</p>
+        </footer>
+
+    </main>
+
+</div>
+
+</body>
+</html>

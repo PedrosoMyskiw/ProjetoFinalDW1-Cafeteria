@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro — Caffè D'Autore</title>
+    <link rel="stylesheet" href="cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="vintage-container">
+        <header class="header-vintage">
+            <h1>Caffè D'Autore</h1>
+            <p class="subtitle">Criar uma Nova Conta</p>
+        </header>
+
+        <form id="formCadastro" class="form-vintage">
+            <div id="mensagem" class="mensagem-status"></div>
+
+            <fieldset class="secao-form">
+                <legend>Dados Pessoais</legend>
+                
+                <div class="grupo-input">
+                    <label for="nome">Nome Completo *</label>
+                    <input type="text" id="nome" required placeholder="Ex: Marco Rossi">
+                </div>
+
+                <div class="grupo-input">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" required placeholder="seu@email.com">
+                </div>
+
+                <div class="grupo-duplo">
+                    <div class="grupo-input">
+                        <label for="senha">Senha *</label>
+                        <input type="password" id="senha" required placeholder="Mín. 8 caracteres">
+                    </div>
+                    <div class="grupo-input">
+                        <label for="confirmarSenha">Confirmar Senha *</label>
+                        <input type="password" id="confirmarSenha" required placeholder="Repita a senha">
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" placeholder="(11) 99999-9999">
+                </div>
+            </fieldset>
+
+            <fieldset class="secao-form">
+                <legend>Endereço de Entrega</legend>
+
+                <div class="grupo-duplo">
+                    <div class="grupo-input flex-2">
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" placeholder="00000-000" maxlength="9">
+                    </div>
+                    <div class="grupo-input flex-1">
+                        <label for="estado">UF</label>
+                        <input type="text" id="estado" placeholder="SP" maxlength="2">
+                    </div>
+                </div>
+
+                <div class="grupo-duplo">
+                    <div class="grupo-input flex-3">
+                        <label for="logradouro">Rua / Avenida</label>
+                        <input type="text" id="logradouro" placeholder="Rua das Flores">
+                    </div>
+                    <div class="grupo-input flex-1">
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero" placeholder="123">
+                    </div>
+                </div>
+
+                <div class="grupo-duplo">
+                    <div class="grupo-input">
+                        <label for="complemento">Complemento</label>
+                        <input type="text" id="complemento" placeholder="Apto 42, Bloco B">
+                    </div>
+                    <div class="grupo-input">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro" placeholder="Centro">
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" placeholder="São Paulo">
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn-vintage">Cadastrar-se</button>
+        </form>
+
+        <footer class="footer-link">
+            <p>Já possui uma conta? <a href="../login/login.html">Faça Login aqui</a></p>
+        </footer>
+    </div>
+
+    <script src="cadastro.js"></script>
+</body>
+</html>

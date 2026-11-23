@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento | Caffè D'Autore</title>
+
+    <link rel="stylesheet" href="pagamento.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="pagamento.js" defer></script>
+</head>
+<body>
+
+    <header class="checkout-header">
+        <div class="header-inner">
+            <a href="../loja/loja.html" class="btn-voltar">← Voltar para a loja</a>
+            <div class="brand-title">
+                <h2>Caffè D'Autore</h2>
+                <span>FINALIZAÇÃO DE PEDIDO</span>
+            </div>
+            <div class="user-badge" id="usuarioNomeBadge">Cliente</div>
+        </div>
+    </header>
+
+    <main class="checkout-container">
+
+        <!-- COLUNA ESQUERDA: FORMA DE PAGAMENTO E DADOS -->
+        <section class="checkout-card pagamento-box">
+            <span class="small-label">PASSO FINAL</span>
+            <h1>Escolha a forma de pagamento</h1>
+            <p class="subtitle">Escaneie o QR Code com a câmera do celular ou preencha os dados do cartão.</p>
+
+            <div class="payment-methods">
+                <label class="payment-option selected" onclick="selecionarMetodo('pix', this)">
+                    <input type="radio" name="metodoPagamento" value="pix" checked>
+                    <div class="option-icon">💠</div>
+                    <div class="option-info">
+                        <strong>PIX (QR Code)</strong>
+                        <small>Leia o código com seu celular</small>
+                    </div>
+                </label>
+
+                <label class="payment-option" onclick="selecionarMetodo('cartao_credito', this)">
+                    <input type="radio" name="metodoPagamento" value="cartao_credito">
+                    <div class="option-icon">💳</div>
+                    <div class="option-info">
+                        <strong>Cartão de Crédito</strong>
+                        <small>Informe os dados do cartão abaixo</small>
+                    </div>
+                </label>
+
+                <label class="payment-option" onclick="selecionarMetodo('cartao_debito', this)">
+                    <input type="radio" name="metodoPagamento" value="cartao_debito">
+                    <div class="option-icon">🏧</div>
+                    <div class="option-info">
+                        <strong>Cartão de Débito</strong>
+                        <small>Informe os dados do cartão abaixo</small>
+                    </div>
+                </label>
+
+                <label class="payment-option" onclick="selecionarMetodo('dinheiro', this)">
+                    <input type="radio" name="metodoPagamento" value="dinheiro">
+                    <div class="option-icon">💵</div>
+                    <div class="option-info">
+                        <strong>Dinheiro</strong>
+                        <small>Pagamento em espécie na retirada no balcão</small>
+                    </div>
+                </label>
+            </div>
+
+            <!-- ÁREA PIX (QR CODE REAL) -->
+            <div id="areaPix" class="payment-panel">
+                <div class="pix-wrapper">
+                    <div class="qr-frame">
+                        <img id="imgQrCodePix" src="" alt="Carregando QR Code PIX...">
+                    </div>
+                    <div class="pix-instructions">
+                        <span class="pix-badge" id="statusPixBadge">⏳ Aguardando leitura pela câmera...</span>
+                        <p>Abra a câmera do seu celular (conectado na mesma rede Wi-Fi) e aponte para o QR Code ao lado.</p>
+                        <p>Assim que você abrir o link no celular, o botão <strong>Finalizar Pedido</strong> será liberado automaticamente.</p>
+                        <small id="infoLinkQr" style="color: var(--muted); word-break: break-all;"></small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ÁREA CARTÃO (CRÉDITO / DÉBITO) -->
+            <div id="areaCartao" class="payment-panel" style="display: none;">
+                <h3 class="panel-title" id="tituloAreaCartao">Dados do Cartão de Crédito</h3>
+                <div class="card-form-grid">
+                    <div class="form-field full">
+                        <label for="inputNomeCartao">Nome impresso no cartão *</label>
+                        <input type="text" id="inputNomeCartao" placeholder="Ex: JOÃO DA SILVA" oninput="validarFormularioPagamento()">
+                    </div>
+
+                    <div class="form-field full">
+                        <label for="inputNumeroCartao">Número do cartão *</label>
+                        <input type="text" id="inputNumeroCartao" placeholder="0000 0000 0000 0000" maxlength="19" oninput="formatarNumeroCartao(this)">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="inputValidadeCartao">Validade (MM/AA) *</label>
+                        <input type="text" id="inputValidadeCartao" placeholder="MM/AA" maxlength="5" oninput="formatarValidadeCartao(this)">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="inputCvvCartao">CVV *</label>
+                        <input type="text" id="inputCvvCartao" placeholder="123" maxlength="4" oninput="formatarCvvCartao(this)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ÁREA DINHEIRO -->
+            <div id="areaDinheiro" class="payment-panel" style="display: none;">
+                <p class="dinheiro-info">O pagamento será realizado diretamente no balcão ao retirar seu pedido.</p>
+                <div class="form-field">
+                    <label for="inputTroco">Precisa de troco para quanto? (Opcional)</label>
+                    <input type="number" id="inputTroco" placeholder="Ex: 50.00" step="0.01" min="0">
+                </div>
+            </div>
+        </section>
+
+        <!-- COLUNA DIREITA: RESUMO DO PEDIDO -->
+        <aside class="checkout-card resumo-box">
+            <span class="small-label">SUA SACOLA</span>
+            <h2>Resumo do pedido</h2>
+
+            <ul id="listaItensResumo" class="resumo-lista"></ul>
+
+            <div class="resumo-totais">
+                <div class="linha-total">
+                    <span>Atendimento</span>
+                    <span>Retirada no balcão</span>
+                </div>
+                <div class="linha-total">
+                    <span>Subtotal</span>
+                    <span id="valorSubtotal">R$ 0,00</span>
+                </div>
+                <div class="linha-total destaque">
+                    <span>Total a pagar</span>
+                    <span id="valorTotalFinal">R$ 0,00</span>
+                </div>
+            </div>
+
+            <div id="mensagemErroPagamento" class="msg-erro" style="display: none;"></div>
+
+            <button type="button" id="btnConfirmarPedido" class="btn-finalizar-definitivo" disabled onclick="confirmarERegistrarPedido()">
+                Aguardando leitura do QR Code...
+            </button>
+        </aside>
+
+    </main>
+
+    <!-- MODAL DE COMPROVANTE DO PEDIDO -->
+    <div id="modalComprovanteOverlay" class="comprovante-overlay" style="display: none;">
+        <div class="comprovante-card">
+            <div class="comprovante-topo">
+                <div class="check-circle">✓</div>
+                <span class="small-label">PEDIDO CONFIRMADO</span>
+                <h2>Caffè D'Autore</h2>
+                <p class="comprovante-sub">Comprovante digital de compra</p>
+            </div>
+
+            <div class="comprovante-numero-box">
+                <span>NÚMERO DO PEDIDO</span>
+                <strong id="compNumeroPedido">#000</strong>
+            </div>
+
+            <div class="comprovante-meta">
+                <div class="meta-linha">
+                    <span>Cliente</span>
+                    <strong id="compCliente">-</strong>
+                </div>
+                <div class="meta-linha">
+                    <span>Data e Hora</span>
+                    <strong id="compDataHora">-</strong>
+                </div>
+                <div class="meta-linha">
+                    <span>Atendimento</span>
+                    <strong>Retirada no balcão</strong>
+                </div>
+                <div class="meta-linha">
+                    <span>Pagamento</span>
+                    <strong id="compFormaPagamento">-</strong>
+                </div>
+            </div>
+
+            <div class="comprovante-divisor"></div>
+
+            <ul id="compListaItens" class="comprovante-itens"></ul>
+
+            <div class="comprovante-divisor"></div>
+
+            <div class="comprovante-total">
+                <span>Total Pago</span>
+                <strong id="compValorTotal">R$ 0,00</strong>
+            </div>
+
+            <div class="comprovante-rodape-pdf">
+                Obrigado pela preferência! Apresente o número <strong>#</strong> no balcão para retirar seu pedido.<br>
+                Caffè D'Autore · Cafeteria Artesanal
+            </div>
+
+            <div class="comprovante-acoes">
+                <button type="button" class="btn-imprimir-comp" onclick="window.print()">
+                    🖨️ Imprimir / Salvar PDF
+                </button>
+                <button type="button" class="btn-voltar-loja-comp" onclick="concluirEVoltarLoja()">
+                    Voltar para a Loja
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

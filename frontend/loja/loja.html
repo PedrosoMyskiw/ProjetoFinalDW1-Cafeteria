@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caffè D'Autore | Cafés Especiais</title>
+    <link rel="stylesheet" href="loja.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+        <a href="#" class="logo">
+            <span>CAFFÈ</span>
+            <strong>D'AUTORE</strong>
+        </a>
+        <nav class="navbar">
+            <a href="#inicio">Início</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#categorias">Categorias</a>
+        </nav>
+        <div class="header-actions" id="containerAuth">
+            <a href="../login/login.html" class="btn-login" id="btnAuth">Login</a>
+            <button class="btn-cart" id="openCart">♡ Carrinho</button>
+        </div>
+    </header>
+
+    <!-- BANNER PRINCIPAL -->
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <span class="small-title">A ARTE DE APRECIAR UM BOM CAFÉ</span>
+                <h1>
+                    O verdadeiro<br>
+                    sabor do <span>café.</span>
+                </h1>
+                <p>
+                    Descubra uma experiência única em cada xícara.
+                    Cafés selecionados especialmente para transformar
+                    seus momentos em algo extraordinário.
+                </p>
+                <a href="#produtos" class="btn">EXPLORE NOSSOS CAFÉS</a>
+            </div>
+
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85" alt="Café especial preparado em uma cafeteria">
+                <div class="vertical-text">COFFEE EXPERIENCE</div>
+                <span class="image-caption">ESPRESSO / LATTE / CAPPUCCINO</span>
+            </div>
+        </section>
+
+        <!-- FAIXA DECORATIVA -->
+        <section class="marquee">
+            <span>
+                SPECIAL COFFEE ✳ PREMIUM QUALITY ✳ MADE WITH LOVE ✳ SPECIAL COFFEE ✳
+            </span>
+        </section>
+
+       <!-- CATEGORIAS (ABAS COMPACTAS SEM IMAGEM) -->
+        <section class="categories section" id="categorias">
+            <div class="section-heading">
+                <div>
+                    <span class="small-title">DESCUBRA NOSSO UNIVERSO</span>
+                    <h2>Nossas categorias</h2>
+                </div>
+                <p>Selecione uma categoria para filtrar os produtos.</p>
+            </div>
+
+            <!-- Container dinamico renderizado como abas pelo loja.js -->
+            <div class="category-tabs" id="categoryGrid">
+                <p>Carregando categorias...</p>
+            </div>
+        </section>
+
+        <!-- PRODUTOS EM DESTAQUE (CARREGADOS DINAMICAMENTE) -->
+        <section class="products section" id="produtos">
+            <div class="section-heading">
+                <div>
+                    <span class="small-title">ESCOLHIDOS ESPECIALMENTE PARA VOCÊ</span>
+                    <h2>Mais apreciados</h2>
+                </div>
+            </div>
+
+            <!-- O JavaScript preencherá este container -->
+            <div class="product-grid" id="productGrid">
+                <p style="grid-column: 1/-1; text-align: center;">Carregando produtos...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span>CAFFÈ</span>
+                    <strong>D'AUTORE</strong>
+                </a>
+                <p>
+                    A arte de apreciar um bom café.
+                    Qualidade, tradição e sabor em cada detalhe.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4>NAVEGAÇÃO</h4>
+                <a href="#inicio">Início</a>
+                <a href="#produtos">Produtos</a>
+                <a href="#categorias">Categorias</a>
+                <a href="#sobre">Sobre nós</a>
+            </div>
+            <div class="footer-column">
+                <h4>ATENDIMENTO</h4>
+                <a href="#">Contato</a>
+                <a href="#">Política de privacidade</a>
+                <a href="#">Trocas e devoluções</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Caffè D'Autore. Todos os direitos reservados.</p>
+            <span>FEITO COM PAIXÃO POR CAFÉ.</span>
+        </div>
+    </footer>
+
+    <!-- FUNDO ESCURO DO CARRINHO -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- BARRA LATERAL DO CARRINHO (DUPLICIDADE REMOVIDA) -->
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <div>
+                <span class="small-title">SUA SELEÇÃO ESPECIAL</span>
+                <h2>Meu carrinho ♡</h2>
+            </div>
+            <button class="cart-close" id="closeCart">&times;</button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <span>☕</span>
+                <h3>Seu carrinho está vazio</h3>
+                <p>Que tal escolher um café especial?</p>
+                <button id="continuarComprando">EXPLORAR PRODUTOS</button>
+            </div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <strong id="cartTotal">R$ 0,00</strong>
+            </div>
+            <button class="checkout-btn" id="finalizarCompra">FINALIZAR COMPRA</button>
+            <p>Uma experiência especial espera por você ♡</p>
+        </div>
+    </aside>
+
+    <script src="loja.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos | Painel do Gerente - Caffè D'Autore</title>
+
+    <link rel="stylesheet" href="gerente-pedidos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="gerente-pedidos.js" defer></script>
+</head>
+<body>
+
+<div class="admin-container">
+
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-icon"></span>
+            <h2>Caffè D'Autore</h2>
+            <p>PAINEL ADMINISTRATIVO</p>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="../gerente.html" class="menu-item"><span></span> Visão geral</a>
+            <a href="../gerente-produtos/gerente-produtos.html" class="menu-item"><span></span> Produtos</a>
+            <a href="../gerente-categorias/gerente-categorias.html" class="menu-item"><span></span> Categorias</a>
+            <a href="gerente-pedidos.html" class="menu-item active"><span></span> Pedidos</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="manager-info">
+                <div class="manager-avatar" id="sidebar-avatar">G</div>
+                <div>
+                    <strong id="sidebar-nome-usuario">Gerente</strong>
+                    <small id="sidebar-cargo-usuario">Administrador</small>
+                </div>
+            </div>
+
+            <button type="button" class="btn-sair" onclick="fazerLogout()">Sair da conta</button>
+        </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+
+        <header class="admin-header">
+            <div class="header-actions">
+                <a href="../../loja/loja.html" class="btn-voltar-loja">Voltar para a Loja</a>
+            </div>
+        </header>
+
+        <header class="topbar">
+            <div>
+                <span class="small-label">VENDAS DA CAFETERIA</span>
+                <h1>Gerenciar pedidos</h1>
+            </div>
+        </header>
+
+        <!-- PEDIDOS -->
+        <section id="pedidos" class="admin-section">
+            <div class="section-heading">
+                <div>
+                    <p>Acompanhe os pedidos realizados pelos clientes.</p>
+                </div>
+            </div>
+
+            <div class="admin-card">
+                <div class="table-heading">
+                    <h3 class="card-title">Pedidos recebidos</h3>
+
+                    <!-- Menu Suspenso Customizado -->
+                    <div class="custom-dropdown" id="dropdownFiltroPedidos">
+                        <input type="hidden" id="filtroStatusPedido" value="">
+
+                        <button type="button" class="dropdown-trigger" onclick="toggleDropdownFiltro()">
+                            <span class="dropdown-selected-label">📋 Todos os pedidos</span>
+                            <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+
+                        <ul class="dropdown-menu-list">
+                            <li class="dropdown-item ativo" data-value="" onclick="selecionarFiltroDropdown(this)">
+                                <span class="dot dot-todos"></span> Todos os pedidos
+                            </li>
+                            <li class="dropdown-item" data-value="pendente" onclick="selecionarFiltroDropdown(this)">
+                                <span class="dot dot-pendente"></span> Pendente
+                            </li>
+                            <li class="dropdown-item" data-value="em_preparacao" onclick="selecionarFiltroDropdown(this)">
+                                <span class="dot dot-preparo"></span> Em Preparação
+                            </li>
+                            <li class="dropdown-item" data-value="pronto" onclick="selecionarFiltroDropdown(this)">
+                                <span class="dot dot-pronto"></span> Pronto
+                            </li>
+                            <li class="dropdown-item" data-value="concluido" onclick="selecionarFiltroDropdown(this)">
+                                <span class="dot dot-concluido"></span> Concluído
+                            </li>
+                            <li class="dropdown-item" data-value="cancelado" onclick="selecionarFiltroDropdown(this)">
+                                <span class="dot dot-cancelado"></span> Cancelado
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Pedido</th>
+                                <th>Cliente</th>
+                                <th>Data</th>
+                                <th>Itens</th>
+                                <th>Valor</th>
+                                <th>Pagamento</th>
+                                <th>Situação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaPedidosBody">
+                            <tr>
+                                <td colspan="7" style="text-align: center;">Carregando pedidos...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <footer class="admin-footer">
+            <p>© 2026 Caffè D'Autore · Painel administrativo</p>
+        </footer>
+
+    </main>
+
+</div>
+
+</body>
+</html>

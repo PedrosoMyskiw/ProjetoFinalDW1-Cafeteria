@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos | Painel do Gerente - Caffè D'Autore</title>
+
+    <link rel="stylesheet" href="gerente-produtos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="gerente-produtos.js" defer></script>
+</head>
+<body>
+
+<div class="admin-container">
+
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-icon"></span>
+            <h2>Caffè D'Autore</h2>
+            <p>PAINEL ADMINISTRATIVO</p>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="../gerente.html" class="menu-item"><span></span> Visão geral</a>
+            <a href="gerente-produtos.html" class="menu-item active"><span></span> Produtos</a>
+            <a href="../gerente-categorias/gerente-categorias.html" class="menu-item"><span></span> Categorias</a>
+            <a href="../gerente-pedidos/gerente-pedidos.html" class="menu-item"><span></span> Pedidos</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="manager-info">
+                <div class="manager-avatar" id="sidebar-avatar">G</div>
+                <div>
+                    <strong id="sidebar-nome-usuario">Gerente</strong>
+                    <small id="sidebar-cargo-usuario">Administrador</small>
+                </div>
+            </div>
+
+            <button type="button" class="btn-sair" onclick="fazerLogout()">Sair da conta</button>
+        </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+
+        <header class="admin-header">
+            <div class="header-actions">
+                <a href="../../loja/loja.html" class="btn-voltar-loja">Voltar para a Loja</a>
+            </div>
+        </header>
+
+        <header class="topbar">
+            <div>
+                <span class="small-label">CATÁLOGO DA LOJA</span>
+                <h1>Gerenciar produtos</h1>
+            </div>
+        </header>
+
+        <!-- PRODUTOS -->
+        <section id="produtos" class="admin-section">
+            <div class="section-heading">
+                <div>
+                    <p>Pesquise por ID manual para inserir, alterar, excluir ou gerenciar produtos e mídias.</p>
+                </div>
+            </div>
+
+            <!-- PAINEL DE CONTROLE CRUD E IMAGEM (PRODUTOS) -->
+            <div class="admin-card">
+                <h3 class="card-title">Painel de Ações e Cadastro de Produtos</h3>
+
+                <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+
+                    <!-- Campos do Formulário de Produtos (Esquerda) -->
+                    <div style="flex: 1; min-width: 300px;" class="admin-form">
+                        <div class="form-grid">
+
+                            <!-- ID e Pesquisa Alinhados -->
+                            <div class="form-group full-width">
+                                <label for="inputId_produto">ID do Produto *</label>
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <input type="number" id="inputId_produto" placeholder="Digite o ID..." min="1" style="flex: 1;">
+                                    <button class="primary-button" type="button" id="btProcure" onclick="procure()" style="margin-top: 0; white-space: nowrap;">Pesquisar</button>
+                                    <button class="primary-button" type="button" id="btnCancelar" onclick="cancelarOperacao()" style="display: none; margin-top: 0; background: var(--muted); color: white;">Cancelar</button>
+                                </div>
+                            </div>
+
+                            <!-- Nome -->
+                            <div class="form-group full-width">
+                                <label for="inputNome_produto">Nome do produto *</label>
+                                <input type="text" id="inputNome_produto" placeholder="Ex: Cappuccino clássico">
+                            </div>
+
+                            <!-- Categoria e Estoque -->
+                            <div class="form-group">
+                                <label for="selectId_categoria">Categoria *</label>
+                                <select id="selectId_categoria">
+                                    <option value="">Carregando categorias...</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputQuantidade_estoque">Estoque *</label>
+                                <input type="number" id="inputQuantidade_estoque" placeholder="Ex: 50" min="0">
+                            </div>
+
+                            <!-- Preço -->
+                            <div class="form-group full-width">
+                                <label for="inputPreco">Preço Unitário (R$) *</label>
+                                <input type="number" id="inputPreco" placeholder="Ex: 15.90" step="0.01" min="0.01">
+                            </div>
+
+                        </div>
+
+                        <!-- Botões de Ação do CRUD -->
+                        <div style="display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap;">
+                            <button class="primary-button" type="button" id="btInserir" onclick="inserir()" style="display: none; margin-top: 0;">Criar / Inserir</button>
+                            <button class="primary-button" type="button" id="btAlterar" onclick="alterar()" style="display: none; margin-top: 0; background: var(--caramel);">Alterar</button>
+                            <button class="primary-button" type="button" id="btExcluir" onclick="excluir()" style="display: none; margin-top: 0; background: #b66b5e;">Excluir</button>
+                            <button class="primary-button" type="button" id="btSalvar" onclick="salvar()" style="display: none; margin-top: 0; background: #56744c;">Salvar</button>
+                        </div>
+
+                        <!-- Caixa de Avisos -->
+                        <div id="divAviso" class="mensagem-status" style="margin-top: 15px; font-size: 11px; padding: 10px; background: var(--beige); color: var(--brown); border-radius: 6px;">
+                            Digite um ID acima e clique em pesquisar para começar.
+                        </div>
+                    </div>
+
+                    <!-- Preview e Upload da Imagem (Direita) -->
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; width: 160px;">
+                        <div style="width: 140px; height: 140px; border: 1px dashed var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fffdfa; overflow: hidden;">
+                            <img id="imgProduto" src="" alt="Imagem do produto" style="max-width: 100%; max-height: 100%; object-fit: cover;" />
+                        </div>
+                        <button class="primary-button" type="button" onclick="acionarUpload()" style="font-size: 11px; padding: 8px 12px; margin-top: 0; width: 100%;">Escolher Imagem</button>
+                        <input type="file" id="inputImagem" accept="image/*" style="display: none;" onchange="previewImagem()" />
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- TABELA DE PRODUTOS -->
+            <div class="admin-card">
+                <div class="table-heading">
+                    <h3 class="card-title">Produtos cadastrados</h3>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Foto</th>
+                                <th>ID</th>
+                                <th>Produto</th>
+                                <th>Categoria</th>
+                                <th>Preço</th>
+                                <th>Estoque</th>
+                                <th style="text-align: center;">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="outputSaida">
+                            <tr>
+                                <td colspan="7" style="text-align: center;">Carregando registros...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <footer class="admin-footer">
+            <p>© 2026 Caffè D'Autore · Painel administrativo</p>
+        </footer>
+
+    </main>
+
+</div>
+
+</body>
+</html>

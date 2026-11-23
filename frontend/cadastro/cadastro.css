@@ -1,0 +1,279 @@
+/* ================================
+   CONFIGURAÇÕES GERAIS
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #d2c4b5;
+    background-image:
+        radial-gradient(circle at 15% 20%, #e6ddd2 0%, transparent 35%),
+        radial-gradient(circle at 85% 80%, #b69b80 0%, transparent 35%);
+
+    font-family: 'Poppins', sans-serif;
+    color: #29231f;
+    padding: 25px;
+}
+
+/* ================================
+   CONTAINER PRINCIPAL
+================================ */
+.vintage-container {
+    width: 100%;
+    max-width: 620px; /* Largura levemente maior para acomodar o cadastro */
+
+    background-color: #f3eee7;
+    padding: 45px 40px;
+
+    border: 1px solid #c9b8a5;
+    box-shadow: 12px 15px 35px rgba(55, 39, 27, 0.20);
+
+    position: relative;
+}
+
+/* Detalhe decorativo superior */
+.vintage-container::before {
+    content: "";
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+
+    border: 1px solid #d8c9b9;
+    pointer-events: none;
+}
+
+/* ================================
+   CABEÇALHO
+================================ */
+.header-vintage {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.icon-coffee {
+    display: block;
+    font-size: 35px;
+    margin-bottom: 12px;
+    filter: grayscale(1);
+}
+
+.header-vintage h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #29231f;
+}
+
+.subtitle {
+    margin-top: 10px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8b715a;
+}
+
+/* ================================
+   FORMULÁRIO E SEÇÕES
+================================ */
+.form-vintage {
+    position: relative;
+    z-index: 1;
+}
+
+/* Agrupamento em caixas decorativas (Dados Pessoais e Endereço) */
+.secao-form {
+    border: 1px dashed #c9b8a5;
+    padding: 20px 20px 10px 20px;
+    margin-bottom: 23px;
+    background-color: rgba(235, 227, 217, 0.3);
+}
+
+.secao-form legend {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #594434;
+    padding: 0 8px;
+}
+
+/* Organização de campos em linhas duplas */
+.grupo-duplo {
+    display: flex;
+    gap: 15px;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+    flex: 1;
+}
+
+.grupo-input label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+    color: #594434;
+}
+
+.grupo-input input {
+    width: 100%;
+    padding: 12px 14px;
+
+    border: 1px solid #c7b39e;
+    background-color: #ebe3d9;
+
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #35271e;
+
+    transition: all 0.3s ease;
+}
+
+.grupo-input input::placeholder {
+    color: #a89887;
+    font-size: 12px;
+}
+
+.grupo-input input:focus {
+    border-color: #966747;
+    background-color: #fffaf4;
+    box-shadow: 0 0 0 2px rgba(150, 103, 71, 0.12);
+}
+
+/* Proporções utilitárias para campos lado a lado */
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
+.flex-3 { flex: 3; }
+
+/* ================================
+   BOTÃO CADASTRAR
+================================ */
+.btn-vintage {
+    width: 100%;
+    padding: 15px;
+
+    margin-top: 5px;
+
+    background-color: #936342;
+    border: 1px solid #936342;
+
+    color: #f8f2eb;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-vintage:hover {
+    background-color: #30251e;
+    border-color: #30251e;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(48, 37, 30, 0.2);
+}
+
+/* ================================
+   LINK DE LOGIN
+================================ */
+.footer-link {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.footer-link p {
+    font-size: 11px;
+    color: #796858;
+}
+
+.footer-link a {
+    color: #956745;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid #956745;
+    transition: all 0.3s ease;
+}
+
+.footer-link a:hover {
+    color: #30251e;
+    border-color: #30251e;
+}
+
+/* ================================
+   MENSAGEM DE STATUS
+================================ */
+.mensagem-status {
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    display: none;
+}
+
+.mensagem-status.sucesso {
+    display: block;
+    background-color: #e3ebd9;
+    color: #3b5723;
+    border: 1px solid #c2d4b2;
+}
+
+.mensagem-status.erro {
+    display: block;
+    background-color: #f3dede;
+    color: #7e2d2d;
+    border: 1px solid #e0baba;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .vintage-container {
+        padding: 35px 20px;
+    }
+
+    .header-vintage h1 {
+        font-size: 27px;
+    }
+
+    .subtitle {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    /* Em telas pequenas, coloca os campos duplos em coluna */
+    .grupo-duplo {
+        flex-direction: column;
+        gap: 0;
+    }
+}
