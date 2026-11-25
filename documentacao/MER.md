@@ -35,7 +35,6 @@ erDiagram
         varchar nome
         text descricao
         numeric preco
-        varchar imagem
         boolean disponivel
         int quantidade_estoque
     }
@@ -45,7 +44,6 @@ erDiagram
         int id_cliente FK
         timestamp data_pedido
         varchar tipo_atendimento
-        int numero_mesa
         varchar status
         numeric valor_total
     }
@@ -70,11 +68,6 @@ erDiagram
         timestamp data_pagamento
     }
 
-    SESSION {
-        varchar sid PK
-        json sess
-        timestamp expire
-    }
 
     USUARIOS ||--o| CLIENTES : "especializa (1:0..1)"
     CLIENTES ||--o{ PEDIDOS : "realiza (1:N)"
