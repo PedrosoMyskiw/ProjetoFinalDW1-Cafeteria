@@ -104,7 +104,7 @@ ProjetoCafeteria/
 
 ## 🗄️ 2. Diagrama e Dicionário do Banco de Dados
 
-### Modelo Entidade-Relacionamento (MER)
+## Modelo Entidade-Relacionamento (MER) — Caffè D'Autore
 
 ```mermaid
 erDiagram
@@ -141,7 +141,6 @@ erDiagram
         varchar nome
         text descricao
         numeric preco
-        varchar imagem
         boolean disponivel
         int quantidade_estoque
     }
@@ -151,7 +150,6 @@ erDiagram
         int id_cliente FK
         timestamp data_pedido
         varchar tipo_atendimento
-        int numero_mesa
         varchar status
         numeric valor_total
     }
@@ -176,11 +174,6 @@ erDiagram
         timestamp data_pagamento
     }
 
-    SESSION {
-        varchar sid PK
-        json sess
-        timestamp expire
-    }
 
     USUARIOS ||--o| CLIENTES : "especializa (1:0..1)"
     CLIENTES ||--o{ PEDIDOS : "realiza (1:N)"
@@ -201,7 +194,6 @@ erDiagram
 | **`pedidos`** | Cabeçalho do pedido com data, atendimento (`local` ou `retirada`), `numero_mesa`, `status` e `valor_total`. | **N : 1** com `clientes`; **1 : N** com `itens_pedido`; **1 : 1** com `pagamentos`. |
 | **`itens_pedido`** | Tabela associativa que resolve a relação N:M entre `pedidos` e `produtos`, registrando `quantidade` e `preco_unitario`. | **N : 1** com `pedidos` e `produtos`. |
 | **`pagamentos`** | Registra a forma (`pix`, `credito`, `debito`, `dinheiro`), status (`pendente`, `aprovado`, `recusado`) e metadados (`codigo_pix`, `final_cartao`, `troco_para`). | **1 : 1** com `pedidos` (`id_pedido UNIQUE`). |
-| **`session`** | Tabela auxiliar gerenciada pelo `connect-pg-simple` para persistência das sessões HTTP. | Independente. |
 
 ---
 
