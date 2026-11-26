@@ -59,9 +59,6 @@ erDiagram
         varchar forma_pagamento
         varchar status
         numeric valor
-        varchar codigo_pix
-        varchar final_cartao
-        numeric troco_para
         timestamp data_pagamento
     }
 
