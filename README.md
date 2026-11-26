@@ -147,7 +147,6 @@ erDiagram
         int id_pedido PK
         int id_cliente FK
         timestamp data_pedido
-        varchar tipo_atendimento
         varchar status
         numeric valor_total
     }
