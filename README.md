@@ -121,7 +121,6 @@ erDiagram
         int id_usuario PK, FK
         varchar telefone
         varchar cep
-        varchar logradouro
         varchar numero
         varchar complemento
         varchar bairro
@@ -139,7 +138,6 @@ erDiagram
         int id_produto PK
         int id_categoria FK
         varchar nome
-        text descricao
         numeric preco
         boolean disponivel
         int quantidade_estoque
